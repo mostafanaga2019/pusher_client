@@ -48,11 +48,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    // Add the Java 17 compatibility settings
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+  
 
    
 
