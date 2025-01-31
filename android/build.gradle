@@ -35,12 +35,17 @@ android {
         main.java.srcDirs += 'src/main/kotlin'  // Ensure Kotlin files are in the right source directory
     }
 
-    defaultConfig {
-        minSdkVersion 16
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 
     // Add the Java 17 compatibility settings
