@@ -45,13 +45,11 @@ android {
 
     // Add the Java 17 compatibility settings
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "17"  // Make sure Kotlin targets JVM 17
-    }
+   
 
     dependencies {
         implementation "com.pusher:pusher-java-client:2.2.5"
