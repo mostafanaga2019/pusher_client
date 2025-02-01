@@ -2,14 +2,14 @@ group 'com.github.chinloyal.pusher_client'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.7.10' // Keep this or update to a newer version if needed
     repositories {
         google()
-        jcenter()
+        mavenCentral() // Replace jcenter() with mavenCentral() (jcenter is deprecated)
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:7.3.1' // Update AGP to a newer version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -17,7 +17,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral() // Replace jcenter() with mavenCentral()
     }
 }
 
@@ -25,39 +25,32 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33  // Update this to a newer version that supports Java 17
+    namespace "com.github.chinloyal.pusher_client" // Explicitly set the namespace
+    compileSdkVersion 33 // Update to the latest stable version
 
-    if (project.android.hasProperty("namespace")) {
-        namespace("com.github.chinloyal.pusher_client")
+    defaultConfig {
+        minSdkVersion 21 // Minimum SDK version supported by Flutter
+        targetSdkVersion 33 // Match compileSdkVersion
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'  // Ensure Kotlin files are in the right source directory
+        main.java.srcDirs += 'src/main/kotlin' // Ensure Kotlin files are in the right source directory
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17 // Update to Java 17 (or keep 1.8 if needed)
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17' // Update to match Java version (or keep '1.8' if needed)
     }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
-  
-
-   
 
     dependencies {
-        implementation "com.pusher:pusher-java-client:2.2.5"
+        implementation "com.pusher:pusher-java-client:2.2.5" // Keep this dependency
     }
 }
 
-
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" // Keep this dependency
 }
